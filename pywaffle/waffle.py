@@ -536,6 +536,7 @@ class Waffle(Figure):
             is_vertical=self._pa["vertical"],
             is_snake=self._pa["block_arranging_style"] == "snake",
         ):
+            print((col, row))
             # Value could be 0. If so, skip it
             if block_per_cat[class_index] == 0:
                 class_index += 1
@@ -604,10 +605,6 @@ class Waffle(Figure):
             # labels is an alias of legend['labels']
             if "labels" not in self._pa["legend"] and self._pa["labels"]:
                 self._pa["legend"]["labels"] = self._pa["labels"]
-
-            if self._pa["vertical"] is True:
-                self._pa["legend"]["handles"] = list(reversed(self._pa["legend"]["handles"]))
-                self._pa["legend"]["labels"] = list(reversed(self._pa["legend"]["labels"]))
 
             if "handles" in self._pa["legend"] and "labels" in self._pa["legend"]:
                 self.ax.legend(**self._pa["legend"])
